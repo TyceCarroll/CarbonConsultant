@@ -1,0 +1,20 @@
+name: Supabase Keep-Alive (Autonomous)
+
+on:
+  schedule:
+    # Runs at 9:00 AM every Monday and Thursday
+    # Update: Added local timezone support to avoid UTC confusion
+    - cron: '0 9 * * 1,4'
+      timezone: "America/Chicago" 
+  workflow_dispatch: # Allows you to test it manually
+
+jobs:
+  ping_database:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Heartbeat to PostgREST API
+        run: |
+          curl -X GET "${{ secrets.SUPABASE_URL }}/rest/v1/" \
+          -H "apikey: ${{ secrets.SUPABASE_SECRET_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_SECRET_KEY }}" \
+          -I
