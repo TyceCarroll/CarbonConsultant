@@ -1,0 +1,17 @@
+# CarbonConsultant — Python dependencies
+# Install: pip install -r requirements.txt
+
+# API layer
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+
+# AI narrative parsing
+google-genai==1.12.1
+
+# Geospatial
+geopy==2.4.1
+requests==2.32.3
+
+# Environment
+python-dotenv==1.0.1
